@@ -63,10 +63,10 @@ class AddSlugToTables extends Migration
     {
         foreach ($this->models as $model) {
             $tableName = $this->getTableName($model);
-            $slugColumnName = $this->getSlugColumnName($model);
+            $this->slugColumnName = $this->getSlugColumnName($model);
             // drop slug
             Schema::table($tableName, function (Blueprint $table) {
-                $table->dropColumn($slugColumnName);
+                $table->dropColumn($this->slugColumnName);
             });
         }
     }
