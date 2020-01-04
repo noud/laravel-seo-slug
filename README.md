@@ -1,4 +1,4 @@
-# Laravel Slug
+# Laravel SEO Slug
 
 Decorate your Models with SEO Slug.
 
