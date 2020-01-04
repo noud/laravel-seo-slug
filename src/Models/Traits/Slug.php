@@ -14,11 +14,11 @@ trait Slug
      */
     public function getSlugOptions() : SlugOptions
     {
-		return SlugOptions::create()
-			->generateSlugsFrom($this->generateSlug())
-            ->saveSlugsTo($this->getRouteKeyName())	// @todo const in Trait
-            ->allowDuplicateSlugs()	// @todo danger, not unique
-			->usingLanguage('nl')
+        return SlugOptions::create()
+            ->generateSlugsFrom($this->generateSlug())
+            ->saveSlugsTo($this->getRouteKeyName())    // @todo const in Trait
+            ->allowDuplicateSlugs()    // @todo danger, not unique
+            ->usingLanguage('nl')
         ;
     }
     
