@@ -16,30 +16,12 @@ composer require noud/laravel-slug
 
 ## Usage
 
-Here is a usage example. Do a migration and add logic to your models to use Slug URL.
-
-### Migration
-
-Add a migration with your classes you want to decorate with a Slug, like so ```database/migrations/yyy_mm_dd_hhmmss_slugged_tables.php```:
-```
-<?php
-
-use SEO\AddSlugToTables;
-
-class SlugedTables extends AddSlugToTables
-{
-    protected $models = [
-        'BlogPosting',
-        'JobPosting',
-    ];
-}
-```
-
-Now run migrations as usual.
+Here is a usage example. First add the Slug logic to your models. Then create and do a migration.
 
 ### Model
 
-Then you can add the Slug to a Model, like so:
+Add Slug business logic to a Model, like so:
+
 ```
 <?php
 
@@ -62,3 +44,22 @@ class BlogPosting extends Eloquent
     }
 }
 ```
+
+### Migration
+
+Create a migration with the classes you want to decorate with a Slug, like so ```database/migrations/yyy_mm_dd_hhmmss_slugged_tables.php```:
+```
+<?php
+
+use SEO\AddSlugToTables;
+
+class SlugedTables extends AddSlugToTables
+{
+    protected $models = [
+        'BlogPosting',
+        'JobPosting',
+    ];
+}
+```
+
+Now run migrations as usual.
