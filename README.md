@@ -45,7 +45,7 @@ class BlogPosting extends Eloquent
 }
 ```
 
-The default Slug column name is ```slug``` but can be overwritten.
+The default Slug database column name is ```slug``` but can be overwritten.
 
 ```
 <?php
