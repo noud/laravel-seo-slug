@@ -1,0 +1,30 @@
+{
+    "name": "noud/laravel-slug",
+    "description": "Laravel SEO Slug",
+    "type": "library",
+    "require": {
+        "php": ">=7.2.0",
+        "spatie/laravel-sluggable": "^2.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Noud de Brouwer",
+            "email": "noud4@home.nl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "SEO\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SEO\\Providers\\SlugServiceProvider"
+            ]
+        }
+    }
+}
