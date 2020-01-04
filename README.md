@@ -63,3 +63,7 @@ class SlugedTables extends AddSlugToTables
 ```
 
 Now run migrations as usual.
+
+## Result
+
+Now an url like ```https://seo.localhost/blog_posting/2/schema_org``` will change to ```https://seo.localhost/blog_posting/hackathon-tilburg-groot-succes/schema_org```.
