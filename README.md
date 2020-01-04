@@ -51,14 +51,14 @@ use SEO\Models\Traits\Slug;
 class BlogPosting extends Eloquent
 {
     use Slug;
-	
+    
     private $url;
 
-	public function generateSlug() {
+    public function generateSlug() {
         // whatever logic you find appropriate
-		$urlParts = explode('/', $this->url);
-		end($urlParts);
-		return prev($urlParts);
-	}
+        $urlParts = explode('/', $this->url);
+        end($urlParts);
+        return prev($urlParts);
+    }
 }
 ```
