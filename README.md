@@ -45,6 +45,20 @@ class BlogPosting extends Eloquent
 }
 ```
 
+The default Slug column name is ```slug``` but can be overwritten.
+
+```
+<?php
+
+class BlogPosting extends Eloquent
+{
+    public function getRouteKeyName()
+    {
+        return 'sluggish';
+    }
+}
+```
+
 ### Migration
 
 Create a migration with the classes you want to decorate with a Slug, like so ```database/migrations/yyy_mm_dd_hhmmss_slugged_tables.php```:

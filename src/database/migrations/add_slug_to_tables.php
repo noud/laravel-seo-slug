@@ -10,6 +10,8 @@ class AddSlugToTables extends Migration
 {
     protected $models = [];
     
+    protected $slugColumnName;
+
     private function getTableClass(string $model)
     {
         return "App\\Models\\".$model;
@@ -37,15 +39,16 @@ class AddSlugToTables extends Migration
         foreach ($this->models as $model) {
             $tableClass = $this->getTableClass($model);
             $tableName = $this->getTableName($model);
-            $slugColumnName = $this->getSlugColumnName($model);
+            $this->slugColumnName = $this->getSlugColumnName($model);
             // add slug
             Schema::table($tableName, function (Blueprint $table) {
-                $table->string($slugColumnName)->nullable()->after('updated_at');
+                $table->string($this->slugColumnName)->nullable()->after('updated_at');
             });
             // fill slug
             $tupels = $tableClass::all();
             foreach ($tupels as $tupel) {
-                $tupel->$slugColumnName = $tupel->generateSlug();   // @todo check if code works
+                $slugColumnName = $this->slugColumnName;
+                $tupel->$slugColumnName = $tupel->generateSlug();
                 $tupel->save();
             }
         }
