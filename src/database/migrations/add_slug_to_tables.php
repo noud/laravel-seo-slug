@@ -8,13 +8,58 @@ use Illuminate\Database\Migrations\Migration;
 
 class AddSlugToTables extends Migration
 {
+    const MODELS_NAMESPACE = 'App\Models\\';
+
+    const MODEL_METHOD = 'generateSlug';
+
     protected $models = [];
     
     protected $slugColumnName;
 
+    /**
+     * @param $dir
+     */
+    function getClassesList($dir)
+    {
+        $classes = [];
+        $classFiles = \File::allFiles($dir);
+        foreach ($classFiles as $class) {
+            // skip most common model dirs
+            if ((strpos($class->getRealPath(), 'Base') === false) &&
+            (strpos($class->getRealPath(), 'Traits') === false) &&
+            (strpos($class->getRealPath(), 'User') === false)) {
+                $class->classname = str_replace(
+                    [app_path(), '/', '.php'],
+                    ['App', '\\', ''],
+                    $class->getRealPath()
+                );
+                $className = $class->classname;
+                $instance = new $className();
+                $classes[] = $instance;
+            }
+        }
+        return $classes;
+    }
+
+    private function getModelClasses()
+    {
+        return $this->getClassesList(app_path('Models'));
+    }
+
+    private function getClassNamesWithMethod(string $methodName)
+    {
+        $classNames = [];
+        foreach($this->getModelClasses() as $model) {
+            if(method_exists($model, $methodName)){
+                $classNames[] = class_basename($model);
+            }
+        }
+        return $classNames;
+    }
+
     private function getTableClass(string $model)
     {
-        return "App\\Models\\".$model;
+        return self::MODELS_NAMESPACE . $model;
     }
 
     private function getTableName(string $model)
@@ -36,6 +81,7 @@ class AddSlugToTables extends Migration
      */
     public function up()
     {
+        $this->models = $this->getClassNamesWithMethod(self::MODEL_METHOD);
         foreach ($this->models as $model) {
             $tableClass = $this->getTableClass($model);
             $tableName = $this->getTableName($model);
@@ -61,6 +107,7 @@ class AddSlugToTables extends Migration
      */
     public function down()
     {
+        $this->models = $this->getClassNamesWithMethod(self::MODEL_METHOD);
         foreach ($this->models as $model) {
             $tableName = $this->getTableName($model);
             $this->slugColumnName = $this->getSlugColumnName($model);

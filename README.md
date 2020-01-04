@@ -18,9 +18,9 @@ composer require noud/laravel-slug
 
 Here is a usage example. First add the Slug logic to your models. Then create and do a migration.
 
-### Model
+### Models
 
-Add Slug business logic to a Model, like so:
+Add Slug business logic to Models, like so:
 
 ```
 <?php
@@ -34,7 +34,7 @@ class BlogPosting extends Eloquent
 {
     use Slug;
     
-    private $url;
+    private $url;   // par exemple
 
     public function generateSlug() {
         // whatever logic you find appropriate
@@ -61,18 +61,14 @@ class BlogPosting extends Eloquent
 
 ### Migration
 
-Create a migration with the classes you want to decorate with a Slug, like so ```database/migrations/yyy_mm_dd_hhmmss_slugged_tables.php```:
+Create a migration to decorate with the Slugs, like so ```database/migrations/yyy_mm_dd_hhmmss_slugged_tables.php``` as your last migration:
 ```
 <?php
 
 use SEO\AddSlugToTables;
 
 class SlugedTables extends AddSlugToTables
-{
-    protected $models = [
-        'BlogPosting',
-        'JobPosting',
-    ];
+{  
 }
 ```
 
