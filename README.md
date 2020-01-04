@@ -62,7 +62,7 @@ class SlugedTables extends AddSlugToTables
 }
 ```
 
-Now run migrations as usual.
+Run migrations as usual.
 
 ## Result
 
