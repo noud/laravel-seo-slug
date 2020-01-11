@@ -1,11 +1,11 @@
 {
-    "name": "noud/laravel-slug",
-    "description": "Laravel SEO Slug",
-    "type": "library",
+    "name": "noud/laravel-seo-slug",
     "require": {
         "php": ">=7.2.0",
         "spatie/laravel-sluggable": "^2.2"
     },
+    "description": "Laravel SEO Slug",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +17,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "SEO\\": "src/"
+            "SEO\\": "src/app/"
         }
     },
     "extra": {

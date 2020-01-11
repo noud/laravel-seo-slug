@@ -11,7 +11,7 @@ Decorate your Models with SEO Slug.
 
 Install the package by running this command in your terminal/cmd:
 ```
-composer require noud/laravel-slug
+composer require noud/laravel-seo-slug
 ```
 
 ## Usage
@@ -76,4 +76,4 @@ Run migrations as usual.
 
 ## Result
 
-Now an url like ```https://seo.localhost/blog_posting/2/schema_org``` will change to ```https://seo.localhost/blog_posting/hackathon-tilburg-groot-succes/schema_org```.
+Now an url like ```https://seo.localhost/blog_posting/2``` will change to ```https://seo.localhost/blog_posting/hackathon-tilburg-groot-succes```.
